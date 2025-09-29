@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DEMO: Phish Flow (Training) —  ENTER REAL CREDENTIALS</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:Arial, sans-serif; max-width:760px; margin:24px auto; color:#222;}
+    .warn{background:#fff3cd;border:1px solid #ffeeba;padding:10px;border-radius:6px;}
+    .card{border:1px solid #ddd;padding:16px;border-radius:8px;margin-top:12px;}
+    .btn{background:#0b72ef;color:#fff;padding:10px 16px;text-decoration:none;border-radius:6px;display:inline-block}
+  </style>
+</head>
+<body>
+  <div class="warn">
+    <strong>MAFUNZO TU — USIINGIZE DATA HALISI</strong><br>
+    This demonstration is for training only.  enter real passwords, OTPs or card numbers. Type <em>DEMO-PASSWORD</em> / <em>123456</em>.
+  </div>
+
+  <div class="card">
+    <h2>Email (simulated):</h2>
+    <p>From: <em>support@some-bank.example</em></p>
+    <p>Subject: <strong>Verify Your Account Now</strong></p>
+    <p>Click to verify: 
+       <!-- display text differs from actual -->
+       <a id="verifyBtn" class="btn" href="GOOGLE_FORM_LINK_HERE" target="_blank">accounts.google.com</a>
+    </p>
+
+    <hr>
+
+    <h3>Fake verification form (for show only)</h3>
+    <p>This is a simulated form to show structure; hitting Submit will redirect you to the training sink (Google Form) where you will fill DEMO values.</p>
+
+    <form id="simForm" onsubmit="event.preventDefault(); goToSink();">
+      <label>Your email (demo):</label><br>
+      <input type="text" id="email" placeholder="you@example.com" required style="width:100%;padding:8px;margin-top:6px;"><br>
+      <label style="margin-top:8px;display:block">Gmail password (DEMO):</label>
+      <input type="text" id="pwd" placeholder="DEMO-PASSWORD" style="width:100%;padding:8px;margin-top:6px;">
+      <div style="margin-top:12px;">
+        <button class="btn" type="submit">Submit (DEMO)</button>
+      </div>
+    </form>
+
+    <div id="msg" style="margin-top:10px;color:#555"></div>
+  </div>
+
+<script>
+  function goToSink(){
+    document.getElementById('msg').innerHTML = "Redirecting to training sink (Google Form). Please type DEMO-PASSWORD or 123456 there.";
+    setTimeout(function(){
+      var sink = "GOOGLE_FORM_LINK_HERE"; // <<< REPLACE with your Google Form link
+      window.open(sink, "_blank");
+    }, 900);
+  }
+</script>
+</body>
+</html>
